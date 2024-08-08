@@ -1,11 +1,11 @@
 import { cn } from '@/helpers/cn';
+import { FaShopify } from 'react-icons/fa';
 import { FaTruckFast } from 'react-icons/fa6';
 import { MdOutlineKeyboardReturn } from 'react-icons/md';
-import { PiGearFineFill } from 'react-icons/pi';
 
 export function TopBar() {
   return (
-    <div
+    <aside
       className={cn(
         'bg-muted flex items-center justify-center gap-6 py-2',
         '[&>p]:text-foreground [&>p]:flex [&>p]:items-center [&>p]:gap-1.5 [&>p]:font-medium [&>p]:uppercase',
@@ -13,7 +13,7 @@ export function TopBar() {
       )}
     >
       <p>
-        <PiGearFineFill />
+        <FaShopify />
         Sveriges billigaste teknik e-handel
       </p>
       <p>
@@ -22,6 +22,6 @@ export function TopBar() {
       <p>
         <FaTruckFast /> Fri frakt över 500kr
       </p>
-    </div>
+    </aside>
   );
 }
