@@ -2,8 +2,6 @@
 import { api, HydrateClient } from '@/trpc/server';
 import Link from 'next/link'; */
 
-import { TopBar } from '@/components/navbar/topbar';
-
 export default async function Home() {
   /*   const hello = await api.post.hello({ text: 'from tRPC' });
 
@@ -11,7 +9,6 @@ export default async function Home() {
 
   return (
     <main>
-      <TopBar />
     </main>
     /* <HydrateClient>
       <main className='flex flex-col justify-center items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] min-h-screen text-white'>

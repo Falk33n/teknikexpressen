@@ -1,3 +1,4 @@
+import { TopBar } from '@/components/navbar/topbar';
 import '@/styles/globals.scss';
 import { TRPCReactProvider } from '@/trpc/react';
 import { type Metadata } from 'next';
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${poppins.className}`}>
       <body>
+        <TopBar />
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
