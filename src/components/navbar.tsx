@@ -1,13 +1,13 @@
 import {
   Button,
   LoginDialog,
+  Logo,
   NavBarSearchBar,
   RegisterDialog,
   Separator,
   ShoppingCartDialog
 } from '@/components';
 import { cn } from '@/helpers';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FaShopify } from 'react-icons/fa';
 import { FaTruckFast } from 'react-icons/fa6';
@@ -18,7 +18,7 @@ const paragraphClassName = cn(
 );
 const svgClassName = cn('text-xl text-primary');
 
-export function TopNavBar() {
+function TopNavBar() {
   return (
     <aside
       className={cn(
@@ -39,21 +39,11 @@ export function TopNavBar() {
   );
 }
 
-export function MiddleNavBar() {
+function MiddleNavBar() {
   return (
     <div className={cn('flex items-center justify-between overflow-visible')}>
       <div className={cn('relative flex flex-1 items-center')}>
-        <figure>
-          <Image
-            className={cn('-ml-3.5')}
-            draggable={false}
-            width={365}
-            height={235}
-            src='/logo.svg'
-            alt='A blue lightning bolt icon on the left, with the word TEKNIKEXPRESSEN in uppercase on the right, representing the company logo.'
-            priority
-          />
-        </figure>
+        <Logo className={cn('-ml-3.5')} width={365} height={235} />
         <NavBarSearchBar />
         <div
           className={cn('flex items-center justify-between gap-1.5 pl-2 pr-5')}
@@ -90,7 +80,7 @@ const linkClassName = cn(
   'focus-visible:after:origin-bottom-left focus-visible:after:scale-x-100'
 );
 
-export function BottomNavBar() {
+function BottomNavBar() {
   return (
     <nav>
       <ul className={cn('flex items-center justify-center')}>
