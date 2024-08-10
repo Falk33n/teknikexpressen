@@ -1,8 +1,9 @@
-import { TopBar } from '@/components/navbar/topbar';
+import { NavBar } from '@/components';
 import '@/styles/globals.scss';
 import { TRPCReactProvider } from '@/trpc/react';
 import { type Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { cn } from '../helpers';
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '700', '900'],
@@ -19,9 +20,9 @@ export default function RootLayout({
   children
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang='en' className={`${poppins.className}`}>
-      <body>
-        <TopBar />
+    <html lang='en' className={cn(poppins.className)}>
+      <body className={cn('overflow-x-hidden')}>
+        <NavBar />
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
