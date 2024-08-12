@@ -29,8 +29,8 @@ interface CommandDialogProps extends DialogProps {}
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <Dialog {...props}>
-      <DialogContent className='overflow-hidden p-0 shadow-lg'>
-        <Command className='[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5'>
+      <DialogContent className='shadow-lg p-0 overflow-hidden'>
+        <Command className='[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-item]_svg]:w-5 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]_svg]:h-5'>
           {children}
         </Command>
       </DialogContent>
@@ -46,7 +46,7 @@ const CommandInput = React.forwardRef<
     className={cn('flex items-center border border-b-0 px-3', className)}
     cmdk-input-wrapper=''
   >
-    <Search className='mr-2 h-4 w-4 shrink-0 opacity-50' />
+    <Search className='opacity-50 mr-2 w-4 h-4 shrink-0' />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
@@ -156,46 +156,3 @@ export {
   CommandSeparator,
   CommandShortcut
 };
-
-export function NavBarSearchBar() {
-  const [isVisible, setIsVisible] = React.useState(false);
-
-  function handleInputValue(e: React.FormEvent<HTMLInputElement>) {
-    if (e.currentTarget.value !== '' && !isVisible) {
-      setIsVisible(true);
-      return;
-    } else if (e.currentTarget.value === '' && isVisible) {
-      setIsVisible(false);
-    }
-  }
-
-  return (
-    <Command
-      className={cn('relative -ml-9 mr-4 flex-1')}
-      onBlur={() => setIsVisible(false)}
-    >
-      <CommandInput
-        className={cn(isVisible && 'shadow-md')}
-        placeholder='Sök bland våra produkter...'
-        onInput={e => handleInputValue(e)}
-      />
-      <CommandList
-        className={cn(
-          'absolute left-0 top-[2.8rem] z-[2] w-full rounded-b-lg rounded-t-none border border-t-0 bg-background shadow-md',
-          isVisible && 'border-t'
-        )}
-      >
-        {isVisible && (
-          <>
-            <CommandEmpty>Inga produkter hittades.</CommandEmpty>
-            <CommandGroup heading='Träffar'>
-              <CommandItem>Calendar</CommandItem>
-              <CommandItem>Search Emoji</CommandItem>
-              <CommandItem>Calculator</CommandItem>
-            </CommandGroup>
-          </>
-        )}
-      </CommandList>
-    </Command>
-  );
-}
