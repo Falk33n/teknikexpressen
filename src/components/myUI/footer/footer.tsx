@@ -25,25 +25,25 @@ function TopFooter() {
             title='Gå till vår Facebook sida'
             className='text-primary'
             Icon={FaSquareFacebook}
-            href='/'
+            href='https://facebook.com/'
           />
           <SocialMediaLink
             title='Gå till vår X sida'
             className='text-black'
             Icon={FaSquareXTwitter}
-            href='/'
+            href='https://x.com/'
           />
           <SocialMediaLink
             title='Gå till vår Instagram sida'
-            className='text-orange-400'
+            className='text-orange-400 dark:text-[#C43B8A]'
             Icon={FaSquareInstagram}
-            href='/'
+            href='https://instagram.com/'
           />
           <SocialMediaLink
             title='Gå till vår YouTube kanal'
             className='text-red-600'
             Icon={FaSquareYoutube}
-            href='/'
+            href='https://youtube.com/'
           />
         </nav>
       </figure>
@@ -78,7 +78,7 @@ function TopFooter() {
 
 function BottomFooter() {
   return (
-    <aside className={cn('border-t border-input')}>
+    <aside className={cn('border-t border-border dark:border-background/20')}>
       <p className={cn('py-3 text-center text-xs text-muted-foreground')}>
         © 2024 Teknikexpressen AB. All rights reserved.
       </p>
@@ -88,7 +88,11 @@ function BottomFooter() {
 
 export function Footer() {
   return (
-    <footer className={cn('border-t border-input bg-accent', 'mt-[1500px]')}>
+    <footer
+      className={cn(
+        'border-t border-border bg-secondary dark:border-background/20'
+      )}
+    >
       <TopFooter />
       <BottomFooter />
     </footer>

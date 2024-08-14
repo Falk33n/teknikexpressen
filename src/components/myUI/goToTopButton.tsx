@@ -43,7 +43,7 @@ export const GoToTopButton = ({ className, ...props }: GoToTopButtonProps) => {
           title='Gå tillbaka till toppen'
           onClick={scrollToTop}
           className={cn(
-            'fixed bottom-7 right-7 hover:text-primary focus-visible:text-primary',
+            'fixed bottom-7 right-7 opacity-35 transition-all duration-300 hover:text-primary hover:opacity-100 focus-visible:text-primary focus-visible:opacity-100',
             className
           )}
           {...props}

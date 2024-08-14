@@ -1,18 +1,21 @@
 import { Button } from '@/components';
 import { cn } from '@/helpers';
-import type { ButtonHTMLAttributes, ElementType, SVGProps } from 'react';
+import {
+  forwardRef,
+  type ButtonHTMLAttributes,
+  type ElementType,
+  type SVGProps
+} from 'react';
 
 type IconAndTextButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   Icon: ElementType<SVGProps<SVGSVGElement>>;
   heading: string;
 };
 
-export const IconAndTextButton = ({
-  className,
-  heading,
-  Icon,
-  ...props
-}: IconAndTextButtonProps) => {
+export const IconAndTextButton = forwardRef<
+  HTMLButtonElement,
+  IconAndTextButtonProps
+>(({ className, heading, Icon, ...props }, ref) => {
   return (
     <Button
       size={'textAndIcon'}
@@ -22,12 +25,13 @@ export const IconAndTextButton = ({
         'focus-visible:bg-accent/25 focus-visible:text-primary',
         className
       )}
+      ref={ref}
       {...props}
     >
       <Icon className={cn('mb-0.5 size-[1.1rem]')} />
       {heading}
     </Button>
   );
-};
+});
 
 IconAndTextButton.displayName = 'IconAndTextButton';

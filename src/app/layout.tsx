@@ -1,10 +1,11 @@
-import { Footer, GoToTopButton, NavBar } from '@/components';
+import { Footer, GoToTopButton, NavBar, ThemeToggleButton } from '@/components';
+import { cn } from '@/helpers';
+import { ThemeProvider } from '@/providers';
 import '@/styles/globals.scss';
 import { TRPCReactProvider } from '@/trpc/react';
 import { type Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import type { ReactNode } from 'react';
-import { cn } from '../helpers';
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '700', '900'],
@@ -19,13 +20,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang='se' className={cn('h-screen scroll-smooth', poppins.className)}>
+    <html
+      lang='se'
+      className={cn('h-screen scroll-smooth', poppins.className)}
+      suppressHydrationWarning
+    >
       <body className={cn('relative h-screen overflow-x-hidden')}>
         <TRPCReactProvider>
-          <NavBar />
-          {children}
-          <GoToTopButton />
-          <Footer />
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='light'
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NavBar />
+            <main>{children}</main>
+            <ThemeToggleButton />
+            <GoToTopButton />
+            <Footer />
+          </ThemeProvider>
         </TRPCReactProvider>
       </body>
     </html>

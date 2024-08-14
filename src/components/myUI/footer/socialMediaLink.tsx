@@ -21,12 +21,13 @@ export const SocialMediaLink = ({
       aria-label={title}
       title={title}
       className={cn(
-        'text-2xl transition-transform hover:scale-125 focus-visible:scale-125',
+        'relative text-2xl transition-transform hover:scale-125 focus-visible:scale-125',
         className
       )}
       {...props}
     >
-      <Icon />
+      <div className={cn('absolute inset-0 scale-75 bg-[#F8FAFC]')} />
+      <Icon className={cn('relative z-10')} />
     </Link>
   );
 };

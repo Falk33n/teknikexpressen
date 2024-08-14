@@ -18,9 +18,7 @@ import { MdOutlineKeyboardReturn, MdSupportAgent } from 'react-icons/md';
 function TopNavBar() {
   return (
     <aside
-      className={cn(
-        'mb-1.5 flex items-center justify-center gap-6 bg-muted py-2'
-      )}
+      className={cn('flex items-center justify-center gap-6 bg-muted py-2')}
     >
       <IconWithText
         text='Sveriges billigaste teknik e-handel'
@@ -71,11 +69,13 @@ export function NavBar() {
   return (
     <>
       <TopNavBar />
-      <div className={cn('bg-background')}>
+      <div className={cn('bg-background pt-1.5')}>
         <MiddleNavBar />
         <BottomNavBar />
       </div>
-      <Separator className={cn('mx-auto mt-3 w-11/12 opacity-50')} />
+      <div className={cn('bg-background pt-3')}>
+        <Separator className={cn('opacity-50')} />
+      </div>
     </>
   );
 }

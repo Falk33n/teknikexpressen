@@ -9,10 +9,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Input,
-  Label,
-  IconAndTextButton
+  IconAndTextButton,
+  LoginForm,
+  RegisterForm,
+  ShoppingCartTable
 } from '@/components';
+import { cn } from '@/helpers';
 import { HiShoppingCart } from 'react-icons/hi2';
 import { IoPersonAdd, IoPersonSharp } from 'react-icons/io5';
 
@@ -22,38 +24,15 @@ export function RegisterDialog() {
       <DialogTrigger asChild>
         <IconAndTextButton heading='Bli kund' Icon={IoPersonAdd} />
       </DialogTrigger>
-      <DialogContent className='sm:max-w-[425px]'>
+      <DialogContent className={cn('max-w-[1000px] p-8')}>
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Skapa ett konto</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
+            Skapa ditt konto för att bli kund hos Teknikexpressen, tryck på
+            spara när du är färdig.
           </DialogDescription>
         </DialogHeader>
-        <div className='gap-4 grid py-4'>
-          <div className='items-center gap-4 grid grid-cols-4'>
-            <Label htmlFor='name' className='text-right'>
-              Name
-            </Label>
-            <Input
-              id='name'
-              defaultValue='Pedro Duarte'
-              className='col-span-3'
-            />
-          </div>
-          <div className='items-center gap-4 grid grid-cols-4'>
-            <Label htmlFor='username' className='text-right'>
-              Username
-            </Label>
-            <Input
-              id='username'
-              defaultValue='@peduarte'
-              className='col-span-3'
-            />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type='submit'>Save changes</Button>
-        </DialogFooter>
+        <RegisterForm />
       </DialogContent>
     </Dialog>
   );
@@ -65,38 +44,15 @@ export function LoginDialog() {
       <DialogTrigger asChild>
         <IconAndTextButton heading='Logga in' Icon={IoPersonSharp} />
       </DialogTrigger>
-      <DialogContent className='sm:max-w-[425px]'>
+      <DialogContent className={cn('max-w-[1000px] p-8')}>
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Logga in</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
+            Logga in på ditt konto hos Teknikexpressen, när du är klar tryck på
+            logga in.
           </DialogDescription>
         </DialogHeader>
-        <div className='gap-4 grid py-4'>
-          <div className='items-center gap-4 grid grid-cols-4'>
-            <Label htmlFor='name' className='text-right'>
-              Name
-            </Label>
-            <Input
-              id='name'
-              defaultValue='Pedro Duarte'
-              className='col-span-3'
-            />
-          </div>
-          <div className='items-center gap-4 grid grid-cols-4'>
-            <Label htmlFor='username' className='text-right'>
-              Username
-            </Label>
-            <Input
-              id='username'
-              defaultValue='@peduarte'
-              className='col-span-3'
-            />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type='submit'>Save changes</Button>
-        </DialogFooter>
+        <LoginForm />
       </DialogContent>
     </Dialog>
   );
@@ -108,37 +64,19 @@ export function ShoppingCartDialog() {
       <DialogTrigger asChild>
         <IconAndTextButton heading='Kundkorg' Icon={HiShoppingCart} />
       </DialogTrigger>
-      <DialogContent className='sm:max-w-[425px]'>
+      <DialogContent className={cn('max-w-[1000px] p-8')}>
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
+          <DialogTitle>Kundkorg</DialogTitle>
+          <DialogDescription aria-hidden>
+            Här kan du se och redigera din kundkorg, när du är redo att betala
+            kan du trycka på betala.
           </DialogDescription>
+          <ShoppingCartTable />
         </DialogHeader>
-        <div className='gap-4 grid py-4'>
-          <div className='items-center gap-4 grid grid-cols-4'>
-            <Label htmlFor='name' className='text-right'>
-              Name
-            </Label>
-            <Input
-              id='name'
-              defaultValue='Pedro Duarte'
-              className='col-span-3'
-            />
-          </div>
-          <div className='items-center gap-4 grid grid-cols-4'>
-            <Label htmlFor='username' className='text-right'>
-              Username
-            </Label>
-            <Input
-              id='username'
-              defaultValue='@peduarte'
-              className='col-span-3'
-            />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type='submit'>Save changes</Button>
+        <DialogFooter className={cn('flex-1')}>
+          <Button type='submit' size='lg' className={cn('mt-3 self-end')}>
+            Betala
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
